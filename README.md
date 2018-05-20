@@ -1,22 +1,28 @@
-Simple Guardfile for ruby
-Basic Setup
-Here are the basic steps to get started with Guard.
 
-Install Gem
+##Install Gem
 In the terminal, install the Guard gem:
 
-$ gem install guard
+    $ gem install guard
+
 Install a Plugin
+
 Then install the guard-shell gem:
 
-$ gem install guard-shell
-This gem is a plugin for Guard. The reason why we add this plugin is that Guard is constructed such that it needs at least one plugin.
+    $ gem install guard-shell
 
-guard-shell in particular is a plugin that allows Guard to run Ruby or shell commands in response to file changes.
+   $ gem install guard-shell
 
-Make a Guardfile
-Now we can generate a Guardfile. The Guardfile defines which files Guard will watch, and what it will do when one or more of these files change.
 
-Run this command from your terminal:
 
-$ guard init
+    guard :shell do
+	  watch(//) do |modified_files|
+			    puts "Modified files: #{modified_files}"
+					    `ruby #{modified_files[0]} && echo  "\e[1;31m ......................................................... \e[0m"`
+				  end
+    end
+
+Make Guardfile (above)
+
+    $ gem install guard-shell
+
+
